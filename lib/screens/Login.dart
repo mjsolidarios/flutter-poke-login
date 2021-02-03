@@ -9,10 +9,24 @@ class Login extends StatefulWidget {
   _LoginState createState() => _LoginState();
 }
 
+class CustomAnimator extends SimpleAnimation {
+  CustomAnimator(String animationName) : super(animationName);
+
+  start() {
+    isActive = true;
+  }
+
+  stop() {
+    isActive = false;
+  }
+}
+
 class _LoginState extends State<Login> {
   final riveFileName = 'assets/pikachu.riv';
   Artboard _artboard;
   RiveAnimationController _controller;
+  CustomAnimator _tail_animation_controller;
+  bool _tail_animate = false;
 
   @override
   void initState() {
@@ -34,6 +48,20 @@ class _LoginState extends State<Login> {
     } else {
       print("Error loading file.");
     }
+  }
+
+  void _wipersChange(bool tailOn) {
+    if (_tail_animation_controller == null) {
+      _artboard.addController(
+        _tail_animation_controller = CustomAnimator('tail-wag'),
+      );
+    }
+    if (tailOn) {
+      _tail_animation_controller.start();
+    } else {
+      _tail_animation_controller.stop();
+    }
+    setState(() => _tail_animate = !tailOn);
   }
 
   @override
@@ -59,10 +87,11 @@ class _LoginState extends State<Login> {
               ),
             ),
             MaterialButton(
-                child: Text('Login'),
-                onPressed: () => {
-                      //Navigator.pushNamed(context, '/home')
-                    })
+                color: Colors.yellow,
+                child: Text('Press to Animate Tail'),
+                onPressed: () {
+                  _wipersChange(_tail_animate);
+                })
           ],
         )));
   }
