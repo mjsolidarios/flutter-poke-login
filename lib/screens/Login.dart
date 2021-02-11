@@ -192,9 +192,7 @@ class _LoginState extends State<Login> {
                               minWidth: screen_width,
                               color: Colors.yellow,
                               child: Text('Login'),
-                              onPressed: () {
-                                _hideEyes(true);
-                              })
+                              onPressed: () {})
                         ],
                       ),
                     ),
