@@ -15,7 +15,7 @@ class _HomeState extends State<Home> {
         title: Text("Home"),
       ),
       body: Container(
-        child: Text("Test"),
+        child: Text("Sample Content"),
       ),
     );
   }

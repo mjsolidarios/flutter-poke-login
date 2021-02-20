@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_poke_login/screens/Home.dart';
-import 'package:flutter_poke_login/screens/Login.dart';
+import 'package:flutter_poke_login/screens/home.dart';
+import 'package:flutter_poke_login/screens/login.dart';
 
 void main() {
   runApp(MyApp());
